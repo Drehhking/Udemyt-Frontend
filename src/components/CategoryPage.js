@@ -10,7 +10,7 @@ const CategoryPage = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/auth/categories');
+        const response = await axios.get('https://udemybackend-55dq.onrender.com/api/auth/categories');
         setCategories(response.data.categories); // Set the categories from the response
         setLoading(false);
       } catch (err) {

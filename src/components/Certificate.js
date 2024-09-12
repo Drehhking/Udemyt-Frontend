@@ -11,7 +11,7 @@ const CertificatePage = ({ userId }) => {
     // Fetch available categories that user completed
     const fetchCertificates = async () => {
       try {
-        const response = await axios.post('http://localhost:4000/api/auth/generateCertificate', { userId });
+        const response = await axios.post('https://udemybackend-55dq.onrender.com/api/auth/generateCertificate', { userId });
         setCategoryCertificates(response.data.certificates); // Assuming this returns certificate details
       } catch (err) {
         setError('Error fetching certificates');

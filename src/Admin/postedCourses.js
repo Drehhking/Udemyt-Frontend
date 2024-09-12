@@ -12,7 +12,7 @@
 //     useEffect(() => {
 //         const fetchCourses = async () => {
 //             try {
-//                 const response = await axios.get('http://localhost:4000/api/admin/courses');
+//                 const response = await axios.get('https://udemybackend-55dq.onrender.com/api/admin/courses');
 //                 setCourses(response.data.courses);
 //             } catch (error) {
 //                 console.error('Error fetching courses:', error);

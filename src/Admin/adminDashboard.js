@@ -13,7 +13,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const getUsers = async () => {
       try {
-        const res = await axios.get("http://localhost:4000/api/admin/getusers")
+        const res = await axios.get("https://udemybackend-55dq.onrender.com/api/admin/getusers")
         if (res.data.status === "ok") {
           setdata(res.data.user)
         } else {
@@ -30,7 +30,7 @@ const AdminDashboard = () => {
 
   const deleteUser = async (id) => {
     try {
-      const res = await axios.get(`http://localhost:4000/api/admin/deleteUser/${id}`)
+      const res = await axios.get(`https://udemybackend-55dq.onrender.com/api/admin/deleteUser/${id}`)
       if (res.data.status === "okay") {
         toast.success('user deleted successfully')
         setisdeleted(true)

@@ -34,7 +34,7 @@ const navigate = useNavigate()
     try {
       setError(null)
       setLoading(true)
-      const res = await fetch('http://localhost:4000/api/auth/signup', {
+      const res = await fetch('https://udemybackend-55dq.onrender.com/api/auth/signup', {
         method : "POST",
         headers: {
           'Content-Type' : 'application/json'

@@ -41,7 +41,7 @@ const CoursesAdmin = () => {
         setLoading(true);
 
         try {
-            const res = await axios.post('http://localhost:4000/api/admin/uploadCourses', course);
+            const res = await axios.post('https://udemybackend-55dq.onrender.com/api/admin/uploadCourses', course);
             if (res.data.status === 'ok') {
                 toast.success('Course posted successfully');
                 // Clear form after successful submission

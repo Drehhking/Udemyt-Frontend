@@ -4,7 +4,7 @@ const CategoryPage = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/auth/categories")
+    fetch("https://udemybackend-55dq.onrender.com/api/auth/categories")
       .then((res) => res.json())
       .then((data) => setCategories(data.categories));
   }, []);

@@ -14,7 +14,7 @@ const CourseDetails = (props) => {
   useEffect(() => {
     const fetchCourse = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/admin/courses/${id}`);
+        const response = await axios.get(`https://udemybackend-55dq.onrender.com/api/admin/courses/${id}`);
         const fetchedCourse = response.data.course;
 
         const userData = JSON.parse(localStorage.getItem('user_data')) || {};
@@ -39,7 +39,7 @@ const CourseDetails = (props) => {
       const userId = user?.userId;
 
       // Update the purchase status on the server
-      await axios.post('http://localhost:4000/api/auth/update-purchase-status', {
+      await axios.post('https://udemybackend-55dq.onrender.com/api/auth/update-purchase-status', {
         courseId: course._id,
         userId: userId,
       });

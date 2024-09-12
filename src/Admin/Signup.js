@@ -12,7 +12,7 @@ const Signup = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post('http://localhost:4000/adminSignup', {adminName, adminEmail, adminPassword})
+        axios.post('https://udemybackend-55dq.onrender.com/adminSignup', {adminName, adminEmail, adminPassword})
         .then(result => {console.log(result)
             navigate("/Loginin")
         })
