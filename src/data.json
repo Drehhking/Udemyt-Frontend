@@ -1,0 +1,39 @@
+[
+    {
+        "id" : "1",
+        "title" : "The complete javascript bootcamp from scatch",
+        "username" : "Jose portilla , pieran Training",
+        "vote" : "4.7",
+        "students" : "(507,657)",
+        "price" : "₦41,000",
+        "oldPrice" : "₦80,000"
+    },
+    {
+        "id" : "2",
+        "title" : "100 days of code: The complete javascript programming",
+        "username" : "Dr. Angela Yu, Developer and lead...",
+        "vote" : "4.7",
+        "students" : "(300,958)",
+        "price" : "₦36,000",
+        "oldPrice" : "₦67,000",
+        "status" : "Bestseller"
+    },
+    {
+        "id" : "3",
+        "title" : "Automate the boring stuff with Javascript",
+        "username" : "AI sweigart",
+        "vote" : "4.7",
+        "students" : "(113,051)",
+        "price" : "₦52,300",
+        "oldPrice" : "₦93,000"
+    },
+    {
+        "id" : "4",
+        "title" : "The complete javascript course",
+        "username" : "Joseph Delgadilo, Nick Germaine",
+        "vote" : "4.7",
+        "students" : "(23,567ce)",
+        "price" : "₦35,000",
+        "oldPrice" : "₦48,500"
+    }
+]

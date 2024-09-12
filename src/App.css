@@ -1,0 +1,231 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+body {
+  /* height: 100vh; */
+  /* background-color: white; */
+}
+.div1 {
+  background-color: red;
+  width: 100%;
+  padding: 1em 0;
+  display: flex;
+}
+.img1 {
+  width: 100%;
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background: bottom;
+  height: 400px;
+}
+.small-modal {
+  position: absolute;
+  top: 120px;
+  left: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.153);
+  height: 150px;
+  width: 440px;
+  background-color: white;
+  padding: 2.1em 1em;
+}
+.text-1 {
+  font-size: 32px;
+  font-weight: 600;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: normal;
+  font-stretch: 100%;
+  font-variant: normal;
+}
+.second-div {
+  margin-top: 50px;
+}
+.second-inner-div {
+  background-color: rgba(128, 128, 128, 0.109);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+}
+.second-inner2-div {
+  display: flex;
+  justify-content: space-around;
+}
+.second-inner2-div img {
+  width: 100px;
+}
+.dashboard-main-div {
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* flex-direction: column; */
+  /* height: 100vh; */
+}
+/* profile-card */
+.profile-card {
+  width: 500px;
+}
+.avatar {
+  margin-bottom: 1.5rem;
+}
+.username {
+  text-transform: capitalize;
+}
+.profile-btn :hover{
+  margin-top: 1.3rem;
+  width: 100%;
+}
+.navbar-btns {
+  display: flex;
+  margin-top: 1%;
+}
+.brand-and-toggler {
+  font-weight: 700;
+  margin-top: 1%;
+}
+.holder {
+  width: 100%;
+}
+.item-body:hover .hover-block {
+  display: block;
+}
+.featured {
+  background-color: #d5d5d59c;
+  padding: 20px 10px 20px 10px;
+  width: 100%;
+}
+.top {
+  font-size: 20px;
+}
+.img {
+  width: 200px;
+  gap: 20px;
+}
+.imgg1 {
+  width: 480px;
+  padding: 7px;
+}
+.imgg11 {
+}
+.down span {
+  font-weight: 800;
+  font-size: 14px;
+}
+.main {
+  padding: 10px 20px 0 20px;
+  width: 100%;
+}
+.foot-button {
+  border: 2px solid white;
+  padding: 5px;
+}
+.foot-button1 {
+  border: 2px solid white;
+  padding: 5px;
+}
+.foot-button2 {
+  border: 2px solid black;
+  padding: 5px;
+  font-weight: 600;
+}
+.company1 {
+  span {
+    font-size: 19px;
+  }
+}
+.img22 {
+  padding: 13px;
+}
+.imgg111 {
+  filter: brightness(0) invert(1);
+  height: 50px;
+}
+.link1 a {
+  font-size: 15px;
+  font-weight: 600;
+  color: rebeccapurple;
+  text-decoration: underline;
+}
+.link1 h3 {
+  font-size: 18px;
+  font-weight: 700;
+}
+.dlx1 {
+  gap: 8px;
+}
+.upskill {
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 700;
+  font-size: 30px;
+}
+.business-inn {
+  padding: 5px 0 5px 0;
+}
+.img-instructor {
+  padding: 5px 0 5px 0;
+}
+.udemy-business {
+  gap: 100px;
+}
+.instructor {
+  gap: 140px;
+}
+.foot {
+  width: 100%;
+}
+.image span {
+  font-size: 19px;
+  font-weight: 700;
+  margin-left: 10px;
+}
+.python {
+  width: 80%;
+  padding: 7px;
+  &:hover{
+    transform: translateY(-2%);
+    transition: all 3s ease-in-out;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.265);
+  }
+}
+.python1 {
+  width: 80%;
+  height: 80%;
+  padding: 7px;
+  &:hover{
+    transform: translateY(-2%);
+    transition: all 3s ease-in-out;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.265);
+  }
+}
+.python11 {
+  width: 80%;
+  height: 80%;
+  padding: 7px;
+  &:hover{
+    transform: translateY(-2%);
+    transition: all 3s ease-in-out;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.265);
+  }
+}
+.python12 {
+  width: 100%;
+  height: 80%;
+  &:hover{
+    transform: translateY(-2%);
+    transition: all 3s ease-in-out;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.265);
+  }
+}
+.nn{
+  font-weight: 800;
+}
