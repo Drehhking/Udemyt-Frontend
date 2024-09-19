@@ -1,17 +1,13 @@
-import React, { useContext } from 'react'
-import { AuthContext } from "../contexts/AuthContext"
+import React from 'react'
 import styled from "styled-components"
 import { MdClose } from 'react-icons/md'
 import { useAuth } from '../contexts/AuthContext.js'
-import { Link as Link1 } from 'react-router-dom'
 import { useSidebarContext } from '../contexts/Sidebar_context'
-import { useCoursesContext } from '../contexts/courses_context'
 import { TbWorld } from 'react-icons/tb'
 import {Button}  from "antd"
 // import { useNavigate } from 'react-router-dom'
 
 const Sidebar = () => {
-  const { categories } = useCoursesContext()
   const { closeSidebar, isSidebarOpen } = useSidebarContext();
   const {  logout } = useAuth()
   // const navigate = useNavigate()
@@ -20,7 +16,7 @@ const Sidebar = () => {
      logout()
   }
   const switchToCategory = async () => {
-    window.location.href = "/generateCertificate"
+    window.location.href = "/coursean/categoryList"
   }
 
   // console.log(categories)

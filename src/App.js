@@ -24,10 +24,10 @@ import Courses from './Admin/coursesDepartment';
 import Postedcourse from './Admin/postedCourses'
 import CourseDetails from './components/courseDetails'
 // import AuthGuard from './Auth/AuthGuard'
-import CategoriesPage from './components/CategoryPage';
 import CoursesByCategory from './components/CoursesByCategory';
 import CertificatePage from './components/Certificate';
 import CertificateDisplay from './components/certificateDisplay'
+import CategoryPage from './components/Category'
 // import AdminCourse from './Admin/adminCoursedetails'
 const App = () => {
   const { isAuthenticated } = useAuth()
@@ -54,10 +54,10 @@ const App = () => {
           <Route path='/postedCourses20$' element={<Postedcourse />} />
           <Route path="/course/:id" element={<CourseDetails />} />
           {/* <Route path="/admin/:id" element={<AdminCourse />} /> */}
-          <Route path="/categories" element={<CategoriesPage />} />
           <Route path="/categories/:categoryId/courses" element={<CoursesByCategory />} />
           <Route path="/generateCertificate" element={<CertificatePage />} />
           <Route path="/certificate/:categoryId" element={<CertificateDisplay />} />
+          <Route path="/coursean/categoryList" element={<CategoryPage/>} />
         </Routes>
       </Router>
       <Sidebar />

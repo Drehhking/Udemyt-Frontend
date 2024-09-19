@@ -25,7 +25,7 @@ const Students = () => {
     const deleteUser = async (id) => {
         try {
             const res = await axios.get(`https://udemybackend-55dq.onrender.com/api/admin/deleteUser/${id}`)
-            if (res.data.status === "okay") {
+            if (res.data.status === "ok") {
                 toast.success('user deleted successfully')
                 setisdeleted(true)
             } else {

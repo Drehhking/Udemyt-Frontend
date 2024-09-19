@@ -62,7 +62,7 @@ const AdminDashboard = () => {
           <div className='admin-btns'>
             <Link to="/terms$45"><Button>Terms and Conditions</Button></Link>
             <Link to="/courses$105"><Button className='bg-primary text-white'>Create/Add courses</Button></Link>
-            <Link to="/postedCourses20$"><Button className='bg-primary text-white'>View available courses</Button></Link>
+            {/* <Link to="/postedCourses20$"><Button className='bg-primary text-white'>View available courses</Button></Link> */}
           </div>
         </div>
         <ToastContainer />

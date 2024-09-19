@@ -1,9 +1,5 @@
 import React from 'react'
-import { StarIcon } from '@heroicons/react/outline'
 import img1 from "../Images/javascript 4.jpg"
-import img2 from "../Images/javascript1.jpg"
-import img3 from "../Images/javascript 2.jpg"
-import img4 from "../Images/javascript3.jpg"
 import StarRating from "../components/StarRating"
 const CourseLandingPage = ( {item}, {rating_star} ) => {
   // const { id, image, course_name, creator, actual_price, discounted_price, rating_count, rating_star, category, updated_date, description, what_you_will_learn: learnItems, content} = 
