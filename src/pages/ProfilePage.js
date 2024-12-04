@@ -109,10 +109,11 @@ const Profile = () => {
         <SectionTitle>Basics:</SectionTitle>
         <InputContainer>
           <Label>First Name</Label>
+          <Input type="text" placeholder={user.name} />
         </InputContainer>
-        <InputContainer>
+        {/* <InputContainer>
           <Label>Last Name</Label>
-        </InputContainer>
+        </InputContainer> */}
         <InputContainer>
           <Label>Headline</Label>
           <Input type="text" placeholder="Add a professional headline like 'Instructor at Udemy' or 'Architect'" />
