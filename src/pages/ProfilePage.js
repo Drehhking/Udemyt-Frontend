@@ -1,5 +1,6 @@
 // import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { Typography } from 'antd';
 import { useAuth } from '../contexts/AuthContext'
 // Styled components
 const ProfileContainer = styled.div`
@@ -88,7 +89,9 @@ const Profile = () => {
   return (
     <ProfileContainer>
       <Sidebar>
-        <SidebarHeader>{user.name}</SidebarHeader>
+        <SidebarHeader> <Typography.Title level={2} strong className='username'>
+          {user.name}
+        </Typography.Title></SidebarHeader>
         <SidebarItem>View public profile</SidebarItem>
         <SidebarItem>Profile</SidebarItem>
         <SidebarItem>Photo</SidebarItem>
