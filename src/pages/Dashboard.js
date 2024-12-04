@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Button, Card, Flex, Typography } from 'antd';
 import { useAuth } from '../contexts/AuthContext.js';
 import { UserOutlined } from '@ant-design/icons';
-
 const Dashboard = () => {
-  const { user, logout } = useAuth();
+  const {user, logout} = useAuth()
   const [profilePicture, setProfilePicture] = useState(null);
 
   // Load saved profile picture from localStorage

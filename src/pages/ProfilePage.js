@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+// import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-
+import { useAuth } from '../contexts/AuthContext'
 // Styled components
 const ProfileContainer = styled.div`
   display: flex;
@@ -83,31 +83,12 @@ const Dropdown = styled.select`
 `;
 
 const Profile = () => {
-  const [userName, setUserName] = useState(''); // State for user's name
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-
-  // Simulate fetching the user's account data (replace with real API call or context)
-  useEffect(() => {
-    const fetchUserData = () => {
-      // Example: Replace this with your actual data fetching logic
-      const userData = JSON.parse(localStorage.getItem('user_data')) || {
-        firstName: 'Ahmed',
-        lastName: 'Richard',
-      };
-
-      setUserName(`${userData.firstName} ${userData.lastName}`);
-      setFirstName(userData.firstName);
-      setLastName(userData.lastName);
-    };
-
-    fetchUserData();
-  }, []);
+  const {user} = useAuth()
 
   return (
     <ProfileContainer>
       <Sidebar>
-        <SidebarHeader>{userName}</SidebarHeader>
+        <SidebarHeader>{user?.name}</SidebarHeader>
         <SidebarItem>View public profile</SidebarItem>
         <SidebarItem>Profile</SidebarItem>
         <SidebarItem>Photo</SidebarItem>
@@ -125,19 +106,9 @@ const Profile = () => {
         <SectionTitle>Basics:</SectionTitle>
         <InputContainer>
           <Label>First Name</Label>
-          <Input
-            type="text"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-          />
         </InputContainer>
         <InputContainer>
           <Label>Last Name</Label>
-          <Input
-            type="text"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-          />
         </InputContainer>
         <InputContainer>
           <Label>Headline</Label>
