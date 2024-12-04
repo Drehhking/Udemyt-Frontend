@@ -60,7 +60,7 @@ const NoCategoriesContainer = styled.div`
 `;
 
 const CategoryPage = () => {
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState({});
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [courses, setCourses] = useState([]);
@@ -72,8 +72,8 @@ const CategoryPage = () => {
     const fetchCategories = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('https://udemybackend-55dq.onrender.com/api/auth/categories');
-        setCategories(response.data.categories);
+        const response = await axios.get('https://udemybackend-55dq.onrender.com/api/courses/grouped');
+        setCategories(response.data.coursesGroupedByCategory); // Store courses grouped by category
       } catch (error) {
         console.error("Error fetching categories:", error.response ? error.response.data : error.message);
       } finally {
@@ -86,20 +86,11 @@ const CategoryPage = () => {
     fetchCategories();
   }, []);
 
-  // Fetch courses for the selected category
-  const fetchCoursesByCategory = async (category) => {
+  // Handle category selection
+  const handleCategoryClick = (category) => {
     setSelectedCategory(category);
-    setCourseLoading(true);
-    try {
-      const response = await axios.get(`https://udemybackend-55dq.onrender.com/courses?category=${category}`);
-      setCourses(response.data.courses);
-      // Check if all courses are purchased
-      checkPurchasedCourses(response.data.courses);
-    } catch (error) {
-      console.error("Error fetching courses:", error.response ? error.response.data : error.message);
-    } finally {
-      setCourseLoading(false);
-    }
+    setCourses(categories[category] || []);
+    checkPurchasedCourses(categories[category] || []);
   };
 
   // Check if the user has purchased all courses
@@ -139,9 +130,9 @@ const CategoryPage = () => {
   return (
     <div>
       <CategoryContainer>
-        {categories.length > 0 ? (
-          categories.map((category, index) => (
-            <CategoryItem key={index} onClick={() => fetchCoursesByCategory(category)}>
+        {Object.keys(categories).length > 0 ? (
+          Object.keys(categories).map((category, index) => (
+            <CategoryItem key={index} onClick={() => handleCategoryClick(category)}>
               {category}
             </CategoryItem>
           ))
@@ -150,11 +141,7 @@ const CategoryPage = () => {
         )}
       </CategoryContainer>
 
-      {courseLoading ? (
-        <SpinnerContainer>
-          <Spin size="large" />
-        </SpinnerContainer>
-      ) : (
+      {selectedCategory && (
         <CourseContainer>
           <h2>Courses under {selectedCategory}</h2>
           {courses.length > 0 ? (
