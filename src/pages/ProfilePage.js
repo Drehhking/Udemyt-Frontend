@@ -88,7 +88,7 @@ const Profile = () => {
   return (
     <ProfileContainer>
       <Sidebar>
-        <SidebarHeader>{user?.name}</SidebarHeader>
+        <SidebarHeader>{user.name}</SidebarHeader>
         <SidebarItem>View public profile</SidebarItem>
         <SidebarItem>Profile</SidebarItem>
         <SidebarItem>Photo</SidebarItem>
