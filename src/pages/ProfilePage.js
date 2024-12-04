@@ -90,7 +90,7 @@ const Profile = () => {
   return (
     <ProfileContainer>
       <Sidebar>
-      <UserOutlined style={{ fontSize: '150px' }} /> <UserOutlined style={{ fontSize: '150px' }} />
+      <UserOutlined style={{ fontSize: '150px' }} />
         <SidebarHeader> <Typography.Title level={2} strong className='username'>
           {user.name}
         </Typography.Title></SidebarHeader>
