@@ -2,6 +2,7 @@
 import styled from 'styled-components';
 import { Typography } from 'antd';
 import { useAuth } from '../contexts/AuthContext'
+import { UserOutlined } from '@ant-design/icons';
 // Styled components
 const ProfileContainer = styled.div`
   display: flex;
@@ -89,7 +90,7 @@ const Profile = () => {
   return (
     <ProfileContainer>
       <Sidebar>
-        <img src={user.avatar} alt="Profile Pic" style={{width: '100%', borderRadius: '50%'}} />
+      <UserOutlined style={{ fontSize: '150px' }} /> <UserOutlined style={{ fontSize: '150px' }} />
         <SidebarHeader> <Typography.Title level={2} strong className='username'>
           {user.name}
         </Typography.Title></SidebarHeader>
