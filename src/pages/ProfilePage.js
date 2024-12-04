@@ -89,6 +89,7 @@ const Profile = () => {
   return (
     <ProfileContainer>
       <Sidebar>
+        <img src={user.avatar} alt="Profile Pic" style={{width: '100%', borderRadius: '50%'}} />
         <SidebarHeader> <Typography.Title level={2} strong className='username'>
           {user.name}
         </Typography.Title></SidebarHeader>
