@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Typography } from 'antd';
 import { useAuth } from '../contexts/AuthContext'
 import { UserOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 // Styled components
 const ProfileContainer = styled.div`
   display: flex;
@@ -96,7 +97,7 @@ const Profile = () => {
         </Typography.Title></SidebarHeader>
         <SidebarItem>View public profile</SidebarItem>
         <SidebarItem>Profile</SidebarItem>
-        <SidebarItem>Photo</SidebarItem>
+        <SidebarItem><Link to='/edit'>Photo</Link></SidebarItem>
         <SidebarItem>Account Security</SidebarItem>
         <SidebarItem>Subscriptions</SidebarItem>
         <SidebarItem>Payment methods</SidebarItem>
