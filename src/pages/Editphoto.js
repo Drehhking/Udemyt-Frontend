@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import axios from "axios";
+import { useAuth } from "../contexts/AuthContext";
 
 // Styled Components
 const Container = styled.div`
@@ -108,13 +109,16 @@ const EditPhoto = () => {
   const [image, setImage] = useState(null); // For storing the selected image
   const [preview, setPreview] = useState(""); // For previewing the image
   const [isUploading, setIsUploading] = useState(false); // Loading state for upload
-  const [userId, setUserId] = useState(""); // To store userId dynamically
+  // const [userId, setUserId] = useState(""); // To store userId dynamically
 
   // Fetch the userId from localStorage when the component mounts
-  useEffect(() => {
-    const user_data = JSON.parse(localStorage.getItem("user_data"));
-    setUserId(user_data?.userId || ""); // Set userId or fallback to an empty string
-  }, []);
+  // useEffect(() => {
+  //   const user_data = JSON.parse(localStorage.getItem("user_data"));
+  //   setUserId(user_data?.userId || ""); // Set userId or fallback to an empty string
+  // }, []);
+
+  const { user_data } = useContext(useAuth);
+  const userId = user_data?.userId || "";
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
