@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import axios from "axios";
 
 // Styled Components
 const Container = styled.div`
@@ -78,6 +78,11 @@ const UploadButton = styled.button`
   &:hover {
     background-color: #005bb5;
   }
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
 `;
 
 const SaveButton = styled.button`
@@ -92,11 +97,24 @@ const SaveButton = styled.button`
   &:hover {
     background-color: #333;
   }
+
+  &:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+  }
 `;
 
 const EditPhoto = () => {
   const [image, setImage] = useState(null); // For storing the selected image
-  const [preview, setPreview] = useState(''); // For previewing the image
+  const [preview, setPreview] = useState(""); // For previewing the image
+  const [isUploading, setIsUploading] = useState(false); // Loading state for upload
+  const [userId, setUserId] = useState(""); // To store userId dynamically
+
+  // Fetch the userId from localStorage when the component mounts
+  useEffect(() => {
+    const user_data = JSON.parse(localStorage.getItem("user_data"));
+    setUserId(user_data?.userId || ""); // Set userId or fallback to an empty string
+  }, []);
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -108,28 +126,43 @@ const EditPhoto = () => {
 
   const handleUpload = async () => {
     if (!image) {
-      alert('Please select an image first.');
+      alert("Please select an image first.");
       return;
     }
 
+    if (!userId) {
+      alert("User ID is missing. Please log in again.");
+      return;
+    }
+
+    setIsUploading(true);
+
     const formData = new FormData();
-    formData.append('profilePicture', image);
+    formData.append("profilePicture", image);
+    formData.append("userId", userId); // Send user ID with the upload request
 
     try {
       const response = await axios.post(
-        'https://udemybackend-55dq.onrender.com/api/upload-profile-photo',
+        "https://udemybackend-55dq.onrender.com/api/upload-profile-photo",
         formData,
         {
           headers: {
-            'Content-Type': 'multipart/form-data',
+            "Content-Type": "multipart/form-data",
           },
         }
       );
-      alert('Image uploaded successfully!');
-      console.log('Response:', response.data);
+      alert("Image uploaded successfully!");
+      console.log("Response:", response.data);
+
+      // Update the preview with the new profile image URL (if available from the response)
+      if (response.data.profileImage) {
+        setPreview(response.data.profileImage);
+      }
     } catch (error) {
-      console.error('Error uploading image:', error);
-      alert('Failed to upload image. Please try again.');
+      console.error("Error uploading image:", error);
+      alert("Failed to upload image. Please try again.");
+    } finally {
+      setIsUploading(false);
     }
   };
 
@@ -147,9 +180,11 @@ const EditPhoto = () => {
       <Form>
         <InputContainer>
           <FileInput type="file" accept="image/*" onChange={handleFileChange} />
-          <UploadButton onClick={handleUpload}>Upload image</UploadButton>
+          <UploadButton onClick={handleUpload} disabled={isUploading}>
+            {isUploading ? "Uploading..." : "Upload Image"}
+          </UploadButton>
         </InputContainer>
-        <SaveButton>Save</SaveButton>
+        <SaveButton disabled={isUploading}>Save</SaveButton>
       </Form>
     </Container>
   );
