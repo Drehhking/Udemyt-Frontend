@@ -64,7 +64,7 @@ const App = () => {
           <Route path="/coursean/categoryList" element={<CategoryPage/>} />
           {/* <Route path="/edit" element={<Edit/>} /> */}
           <Route path="/image" element={<Image/>} />
-          <Route path="/Purchase" element={<Purchase/>} />
+          <Route path="/purchase" element={<Purchase/>} />
         </Routes>
       </Router>
       <Sidebar />
