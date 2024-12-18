@@ -29,6 +29,7 @@ import CertificatePage from './components/Certificate';
 import CertificateDisplay from './components/certificateDisplay'
 import CategoryPage from './components/Category'
 import Edit from "./pages/Editphoto"
+import Image from "./pages/Profileimage"
 // import AdminCourse from './Admin/adminCoursedetails'
 const App = () => {
   const { isAuthenticated } = useAuth()
@@ -60,7 +61,8 @@ const App = () => {
           <Route path="/certificate/:categoryId" element={<CertificateDisplay />} />
           <Route path="/coursean/categoryList" element={<CategoryPage/>} />
           <Route path="/coursean/categoryList" element={<CategoryPage/>} />
-          <Route path="/edit" element={<Edit/>} />
+          {/* <Route path="/edit" element={<Edit/>} /> */}
+          <Route path="/image" element={<Image/>} />
         </Routes>
       </Router>
       <Sidebar />

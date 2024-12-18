@@ -62,7 +62,6 @@ const InputContainer = styled.div`
 `;
 
 const FileInput = styled.input`
-  flex: 1;
   padding: 5px;
 `;
 
