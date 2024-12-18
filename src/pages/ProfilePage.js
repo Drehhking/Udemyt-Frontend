@@ -99,7 +99,7 @@ const Profile = () => {
         <SidebarItem>Profile</SidebarItem>
         <SidebarItem><Link to='/edit'>Photo</Link></SidebarItem>
         <SidebarItem>Account Security</SidebarItem>
-        <SidebarItem>Subscriptions</SidebarItem>
+        <SidebarItem><Link to="/Purchase">Subscriptions</Link></SidebarItem>
         <SidebarItem>Payment methods</SidebarItem>
         <SidebarItem>Privacy</SidebarItem>
         <SidebarItem>Notifications</SidebarItem>

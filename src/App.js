@@ -29,6 +29,7 @@ import CertificatePage from './components/Certificate';
 import CertificateDisplay from './components/certificateDisplay'
 import CategoryPage from './components/Category'
 import Edit from "./pages/Editphoto"
+import Purchase from './pages/PurchasedCourses'
 import Image from "./pages/Profileimage"
 // import AdminCourse from './Admin/adminCoursedetails'
 const App = () => {
@@ -63,6 +64,7 @@ const App = () => {
           <Route path="/coursean/categoryList" element={<CategoryPage/>} />
           {/* <Route path="/edit" element={<Edit/>} /> */}
           <Route path="/image" element={<Image/>} />
+          <Route path="/Purchase" element={<Purchase/>} />
         </Routes>
       </Router>
       <Sidebar />
