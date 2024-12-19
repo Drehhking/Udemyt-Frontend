@@ -23,7 +23,7 @@ const PurchasedCourses = () => {
       try {
         console.log("Fetching purchased courses for User ID:", userId);
         const response = await axios.get(
-          `https://udemybackend-55dq.onrender.com/api/purchased-courses/${userId}`
+          `https://udemybackend-55dq.onrender.com/api/admin/purchased-courses/${userId}`
         );
         console.log("API Response:", response.data);
         setPurchasedCourses(response.data);
