@@ -139,7 +139,7 @@ const EditPhoto = () => {
         </InputContainer>
         <SaveButton onClick={handleSave}>Save</SaveButton>
       </Form>
-      <SaveButton onClick={handleLogout}>Logout</SaveButton>
+      {/* <SaveButton onClick={handleLogout}>Logout</SaveButton> */}
     </Container>
   );
 };
