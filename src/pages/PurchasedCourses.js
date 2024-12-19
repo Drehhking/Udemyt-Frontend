@@ -14,13 +14,13 @@ const PurchasedCourses = () => {
 
         // Retrieve user data from localStorage
         const user_data = JSON.parse(localStorage.getItem("user_data"));
-        const userId = user_data.userId;
+        const userId = user_data?.userId;
 
-        if (!userId) {
-          setError("User is not logged in. Please log in to view your courses.");
-          console.error("User ID is missing from localStorage.");
-          return;
-        }
+        // if (!userId) {
+        //   setError("User is not logged in. Please log in to view your courses.");
+        //   console.error("User ID is missing from localStorage.");
+        //   return;
+        // }
 
         console.log("Fetching purchased courses for User ID:", userId);
 
