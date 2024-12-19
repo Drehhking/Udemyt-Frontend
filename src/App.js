@@ -28,12 +28,10 @@ import CoursesByCategory from './components/CoursesByCategory';
 import CertificatePage from './components/Certificate';
 import CertificateDisplay from './components/certificateDisplay'
 import CategoryPage from './components/Category'
-import Edit from "./pages/Editphoto"
 import Purchase from './pages/PurchasedCourses'
 import Image from "./pages/Profileimage"
 // import AdminCourse from './Admin/adminCoursedetails'
 const App = () => {
-  const { isAuthenticated } = useAuth()
   return (
     <div className="App">
       <Router>
