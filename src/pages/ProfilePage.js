@@ -104,10 +104,18 @@ const TextArea = styled.textarea`
   resize: none;
 `;
 
+const Dropdown = styled.select`
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+`;
+
 const SaveButton = styled.button`
   padding: 10px 20px;
   font-size: 1rem;
-  background-color: #0073e6;
+  background-color: black;
   color: white;
   border: none;
   border-radius: 5px;
@@ -123,6 +131,7 @@ const Profile = () => {
   const [profilePhoto, setProfilePhoto] = useState(""); // State to store profile photo
   const [headline, setHeadline] = useState(""); // State for headline
   const [about, setAbout] = useState(""); // State for about
+  const [language, setLanguage] = useState("en"); // State for selected language
   const [editMode, setEditMode] = useState(false); // Toggle input and text
 
   // Load profile photo from localStorage on mount
@@ -194,6 +203,19 @@ const Profile = () => {
           ) : (
             <Typography.Text>{about || "No description provided"}</Typography.Text>
           )}
+        </InputContainer>
+        <InputContainer>
+          <Label>Language</Label>
+          <Dropdown
+            value={language}
+            onChange={(e) => setLanguage(e.target.value)}
+            disabled={!editMode}
+          >
+            <option value="en">English (US)</option>
+            <option value="en-uk">English (UK)</option>
+            <option value="fr">French</option>
+            <option value="es">Spanish</option>
+          </Dropdown>
         </InputContainer>
         {editMode && <SaveButton onClick={handleSave}>Save</SaveButton>}
         {!editMode && (
