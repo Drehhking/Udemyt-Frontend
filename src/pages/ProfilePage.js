@@ -97,9 +97,9 @@ const Profile = () => {
         </Typography.Title></SidebarHeader>
         <SidebarItem>View public profile</SidebarItem>
         <SidebarItem>Profile</SidebarItem>
-        <SidebarItem><Link to='/purchase'>Photo</Link></SidebarItem>
+        <SidebarItem><Link to='/'>Photo</Link></SidebarItem>
         <SidebarItem>Account Security</SidebarItem>
-        <SidebarItem><Link to='/purchase'>Subscriptions</Link></SidebarItem>
+        <SidebarItem><Link to='/purchcase'>Subscriptions</Link></SidebarItem>
         <SidebarItem>Payment methods</SidebarItem>
         <SidebarItem>Privacy</SidebarItem>
         <SidebarItem>Notifications</SidebarItem>
