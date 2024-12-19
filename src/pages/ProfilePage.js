@@ -5,7 +5,7 @@ import { useAuth } from "../contexts/AuthContext";
 import { Link } from "react-router-dom";
 import { UserOutlined } from "@ant-design/icons";
 
-// Styled components
+// Styled components (same as before)
 const ProfileContainer = styled.div`
   display: flex;
   min-height: 100vh;
@@ -143,15 +143,34 @@ const Profile = () => {
   const [language, setLanguage] = useState("en"); // State for selected language
   const [editMode, setEditMode] = useState(false); // Toggle input and text
 
-  // Load profile photo from localStorage on mount
+  // Load profile photo, headline, about, and language from localStorage on mount
   useEffect(() => {
     const savedPhoto = localStorage.getItem("profilePhoto");
     if (savedPhoto) {
       setProfilePhoto(savedPhoto);
     }
+
+    const savedHeadline = localStorage.getItem("headline");
+    if (savedHeadline) {
+      setHeadline(savedHeadline);
+    }
+
+    const savedAbout = localStorage.getItem("about");
+    if (savedAbout) {
+      setAbout(savedAbout);
+    }
+
+    const savedLanguage = localStorage.getItem("language");
+    if (savedLanguage) {
+      setLanguage(savedLanguage);
+    }
   }, []);
 
   const handleSave = () => {
+    // Save the updated values to localStorage
+    localStorage.setItem("headline", headline);
+    localStorage.setItem("about", about);
+    localStorage.setItem("language", language);
     setEditMode(false);
   };
 
