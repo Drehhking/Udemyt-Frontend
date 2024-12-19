@@ -93,7 +93,7 @@ const Profile = () => {
       <Sidebar>
       <UserOutlined style={{ fontSize: '150px' }} />
         <SidebarHeader> <Typography.Title level={2} strong className='username'>
-          {user.name}
+          {/* {user} */}
         </Typography.Title></SidebarHeader>
         <SidebarItem>View public profile</SidebarItem>
         <SidebarItem>Profile</SidebarItem>
