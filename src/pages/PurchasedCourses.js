@@ -1,16 +1,17 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useAuth } from "../contexts/AuthContext";
 
 const PurchasedCourses = () => {
-  const { user_data } = useContext(useAuth);
-  const userId = user_data?.userId || ""; // Retrieve the userId from AuthContext
   const [purchasedCourses, setPurchasedCourses] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchPurchasedCourses = async () => {
+      // Get userId directly from localStorage
+      const user_data = JSON.parse(localStorage.getItem("user_data"));
+      const userId = user_data?.userId || ""; // Fallback to empty string if userId is missing
+
       if (!userId) {
         console.error("User ID is not available. Cannot fetch courses.");
         setError("User is not logged in. Please log in to view your courses.");
@@ -22,7 +23,7 @@ const PurchasedCourses = () => {
       try {
         console.log("Fetching purchased courses for User ID:", userId);
         const response = await axios.get(
-          `https://your-backend-url/api/purchased-courses/${userId}`
+          `https://udemybackend-55dq.onrender.com/api/purchased-courses/${userId}`
         );
         console.log("API Response:", response.data);
         setPurchasedCourses(response.data);
@@ -37,7 +38,7 @@ const PurchasedCourses = () => {
     };
 
     fetchPurchasedCourses();
-  }, [userId]);
+  }, []); // Run only on component mount
 
   if (loading) {
     return <p>Loading...</p>;
