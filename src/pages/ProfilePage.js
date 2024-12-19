@@ -126,6 +126,15 @@ const SaveButton = styled.button`
   }
 `;
 
+const BorderedText = styled.div`
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  font-size: 1rem;
+  color: #333;
+`;
+
 const Profile = () => {
   const { user } = useAuth();
   const [profilePhoto, setProfilePhoto] = useState(""); // State to store profile photo
@@ -189,7 +198,7 @@ const Profile = () => {
               onChange={(e) => setHeadline(e.target.value)}
             />
           ) : (
-            <Typography.Text>{headline || "No headline provided"}</Typography.Text>
+            <BorderedText>{headline || "No headline provided"}</BorderedText>
           )}
         </InputContainer>
         <InputContainer>
@@ -201,7 +210,7 @@ const Profile = () => {
               onChange={(e) => setAbout(e.target.value)}
             />
           ) : (
-            <Typography.Text>{about || "No description provided"}</Typography.Text>
+            <BorderedText>{about || "No description provided"}</BorderedText>
           )}
         </InputContainer>
         <InputContainer>
