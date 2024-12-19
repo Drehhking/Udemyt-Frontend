@@ -1,7 +1,5 @@
-import React, { useState,  useContext } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import axios from "axios";
-import { useAuth } from "../contexts/AuthContext";
 
 // Styled Components
 const Container = styled.div`
@@ -65,26 +63,6 @@ const FileInput = styled.input`
   padding: 5px;
 `;
 
-const UploadButton = styled.button`
-  background-color: #0073e6;
-  color: white;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 5px;
-  font-size: 0.9rem;
-  cursor: pointer;
-  margin-left: 10px;
-
-  &:hover {
-    background-color: #005bb5;
-  }
-
-  &:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-`;
-
 const SaveButton = styled.button`
   background-color: black;
   color: white;
@@ -105,68 +83,43 @@ const SaveButton = styled.button`
 `;
 
 const EditPhoto = () => {
-  const [image, setImage] = useState(null); // For storing the selected image
+  const [image, setImage] = useState(null); // Stores the selected image as a Base64 string
   const [preview, setPreview] = useState(""); // For previewing the image
-  const [isUploading, setIsUploading] = useState(false); // Loading state for upload
-  // const [userId, setUserId] = useState(""); // To store userId dynamically
 
-  // Fetch the userId from localStorage when the component mounts
-  // useEffect(() => {
-  //   const user_data = JSON.parse(localStorage.getItem("user_data"));
-  //   setUserId(user_data?.userId || ""); // Set userId or fallback to an empty string
-  // }, []);
-
-  const { user_data } = useContext(useAuth);
-  const userId = user_data?.userId || "";
+  // Load saved image from localStorage on mount
+  useEffect(() => {
+    const savedImage = localStorage.getItem("profilePhoto");
+    if (savedImage) {
+      setImage(savedImage);
+      setPreview(savedImage);
+    }
+  }, []);
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setImage(file);
-      setPreview(URL.createObjectURL(file)); // Generate a preview URL for the selected image
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64Image = reader.result; // Convert file to Base64 string
+        setImage(base64Image);
+        setPreview(base64Image); // Preview the selected image
+      };
+      reader.readAsDataURL(file);
     }
   };
 
-  const handleUpload = async () => {
-    if (!image) {
+  const handleSave = () => {
+    if (image) {
+      localStorage.setItem("profilePhoto", image); // Save the image in localStorage
+      alert("Profile photo saved successfully!");
+    } else {
       alert("Please select an image first.");
-      return;
     }
+  };
 
-    if (!userId) {
-      alert("User ID is missing. Please log in again.");
-      return;
-    }
-
-    setIsUploading(true);
-
-    const formData = new FormData();
-    formData.append("profilePicture", image);
-    formData.append("userId", userId); // Send user ID with the upload request
-
-    try {
-      const response = await axios.post(
-        "https://udemybackend-55dq.onrender.com/api/upload-profile-photo",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-      alert("Image uploaded successfully!");
-      console.log("Response:", response.data);
-
-      // Update the preview with the new profile image URL (if available from the response)
-      if (response.data.profileImage) {
-        setPreview(response.data.profileImage);
-      }
-    } catch (error) {
-      console.error("Error uploading image:", error);
-      alert("Failed to upload image. Please try again.");
-    } finally {
-      setIsUploading(false);
-    }
+  const handleLogout = () => {
+    // Simulate logout (optional, no action required here if token is not involved)
+    alert("Logged out. The profile photo will persist.");
   };
 
   return (
@@ -183,12 +136,10 @@ const EditPhoto = () => {
       <Form>
         <InputContainer>
           <FileInput type="file" accept="image/*" onChange={handleFileChange} />
-          <UploadButton onClick={handleUpload} disabled={isUploading}>
-            {isUploading ? "Uploading..." : "Upload Image"}
-          </UploadButton>
         </InputContainer>
-        <SaveButton disabled={isUploading}>Save</SaveButton>
+        <SaveButton onClick={handleSave}>Save</SaveButton>
       </Form>
+      <SaveButton onClick={handleLogout}>Logout</SaveButton>
     </Container>
   );
 };
