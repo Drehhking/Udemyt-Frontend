@@ -1,9 +1,10 @@
-// import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import { Typography } from 'antd';
-import { useAuth } from '../contexts/AuthContext'
-import { UserOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import { Typography } from "antd";
+import { useAuth } from "../contexts/AuthContext";
+import { Link } from "react-router-dom";
+import { UserOutlined } from "@ant-design/icons";
+
 // Styled components
 const ProfileContainer = styled.div`
   display: flex;
@@ -16,6 +17,38 @@ const Sidebar = styled.div`
   background-color: #f7f7f7;
   padding: 20px;
   box-shadow: 1px 0 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const SidebarHeader = styled.div`
+  text-align: center;
+  margin-bottom: 20px;
+`;
+
+const ProfileImageContainer = styled.div`
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+`;
+
+const ProfileImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+const PlaceholderIcon = styled(UserOutlined)`
+  font-size: 100px;
+  color: #ccc;
 `;
 
 const SidebarItem = styled.div`
@@ -26,12 +59,6 @@ const SidebarItem = styled.div`
   &:hover {
     color: #0073e6;
   }
-`;
-
-const SidebarHeader = styled.h3`
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-  color: #333;
 `;
 
 const ContentContainer = styled.div`
@@ -86,20 +113,41 @@ const Dropdown = styled.select`
 `;
 
 const Profile = () => {
-  const {user} = useAuth()
+  const { user } = useAuth();
+  const [profilePhoto, setProfilePhoto] = useState(""); // State to store profile photo
+
+  // Load profile photo from localStorage on mount
+  useEffect(() => {
+    const savedPhoto = localStorage.getItem("profilePhoto");
+    if (savedPhoto) {
+      setProfilePhoto(savedPhoto);
+    }
+  }, []);
 
   return (
     <ProfileContainer>
       <Sidebar>
-      <UserOutlined style={{ fontSize: '150px' }} />
-        <SidebarHeader> <Typography.Title level={2} strong className='username'>
-        {user?.name || "Username"}
-        </Typography.Title></SidebarHeader>
+        <ProfileImageContainer>
+          {profilePhoto ? (
+            <ProfileImage src={profilePhoto} alt="Profile" />
+          ) : (
+            <PlaceholderIcon />
+          )}
+        </ProfileImageContainer>
+        <SidebarHeader>
+          <Typography.Title level={2} strong className="username">
+            {user?.name || "Username"}
+          </Typography.Title>
+        </SidebarHeader>
         <SidebarItem>View public profile</SidebarItem>
         <SidebarItem>Profile</SidebarItem>
-        <SidebarItem><Link to='/image'>Photo</Link></SidebarItem>
+        <SidebarItem>
+          <Link to="/image">Photo</Link>
+        </SidebarItem>
         <SidebarItem>Account Security</SidebarItem>
-        <SidebarItem><Link to='/purchased-courses'>Subscriptions</Link></SidebarItem>
+        <SidebarItem>
+          <Link to="/purchased-courses">Subscriptions</Link>
+        </SidebarItem>
         <SidebarItem>Payment methods</SidebarItem>
         <SidebarItem>Privacy</SidebarItem>
         <SidebarItem>Notifications</SidebarItem>
@@ -114,12 +162,12 @@ const Profile = () => {
           <Label>First Name</Label>
           <Input type="text" placeholder={user?.name || "Enter your name"} />
         </InputContainer>
-        {/* <InputContainer>
-          <Label>Last Name</Label>
-        </InputContainer> */}
         <InputContainer>
           <Label>Headline</Label>
-          <Input type="text" placeholder="Add a professional headline like 'Instructor at Udemy' or 'Architect'" />
+          <Input
+            type="text"
+            placeholder="Add a professional headline like 'Instructor at Udemy' or 'Architect'"
+          />
         </InputContainer>
         <InputContainer>
           <Label>About</Label>
