@@ -104,17 +104,26 @@ const TextArea = styled.textarea`
   resize: none;
 `;
 
-const Dropdown = styled.select`
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+const SaveButton = styled.button`
+  padding: 10px 20px;
   font-size: 1rem;
+  background-color: #0073e6;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  &:hover {
+    background-color: #005bb5;
+  }
 `;
 
 const Profile = () => {
   const { user } = useAuth();
   const [profilePhoto, setProfilePhoto] = useState(""); // State to store profile photo
+  const [headline, setHeadline] = useState(""); // State for headline
+  const [about, setAbout] = useState(""); // State for about
+  const [editMode, setEditMode] = useState(false); // Toggle input and text
 
   // Load profile photo from localStorage on mount
   useEffect(() => {
@@ -123,6 +132,10 @@ const Profile = () => {
       setProfilePhoto(savedPhoto);
     }
   }, []);
+
+  const handleSave = () => {
+    setEditMode(false);
+  };
 
   return (
     <ProfileContainer>
@@ -159,29 +172,33 @@ const Profile = () => {
         <p>Add information about yourself</p>
         <SectionTitle>Basics:</SectionTitle>
         <InputContainer>
-          <Label>First Name</Label>
-          <Input type="text" placeholder={user?.name || "Enter your name"} />
-        </InputContainer>
-        <InputContainer>
           <Label>Headline</Label>
-          <Input
-            type="text"
-            placeholder="Add a professional headline like 'Instructor at Udemy' or 'Architect'"
-          />
+          {editMode ? (
+            <Input
+              type="text"
+              value={headline}
+              onChange={(e) => setHeadline(e.target.value)}
+            />
+          ) : (
+            <Typography.Text>{headline || "No headline provided"}</Typography.Text>
+          )}
         </InputContainer>
         <InputContainer>
           <Label>About</Label>
-          <TextArea rows="4" placeholder="Write about yourself here..." />
+          {editMode ? (
+            <TextArea
+              rows="4"
+              value={about}
+              onChange={(e) => setAbout(e.target.value)}
+            />
+          ) : (
+            <Typography.Text>{about || "No description provided"}</Typography.Text>
+          )}
         </InputContainer>
-        <InputContainer>
-          <Label>Language</Label>
-          <Dropdown>
-            <option value="en">English (US)</option>
-            <option value="en-uk">English (UK)</option>
-            <option value="fr">French</option>
-            <option value="es">Spanish</option>
-          </Dropdown>
-        </InputContainer>
+        {editMode && <SaveButton onClick={handleSave}>Save</SaveButton>}
+        {!editMode && (
+          <SaveButton onClick={() => setEditMode(true)}>Edit</SaveButton>
+        )}
       </ContentContainer>
     </ProfileContainer>
   );
