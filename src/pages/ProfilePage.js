@@ -86,7 +86,7 @@ const Dropdown = styled.select`
 `;
 
 const Profile = () => {
-  const {user} = useAuth()
+  // const {user} = useAuth()
 
   return (
     <ProfileContainer>
@@ -112,7 +112,7 @@ const Profile = () => {
         <SectionTitle>Basics:</SectionTitle>
         <InputContainer>
           <Label>First Name</Label>
-          <Input type="text" placeholder={user.name} />
+          {/* <Input type="text" placeholder={user.name} /> */}
         </InputContainer>
         {/* <InputContainer>
           <Label>Last Name</Label>
