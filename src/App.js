@@ -62,7 +62,7 @@ const App = () => {
           <Route path="/coursean/categoryList" element={<CategoryPage/>} />
           {/* <Route path="/edit" element={<Edit/>} /> */}
           <Route path="/image" element={<Image/>} />
-          <Route path="/purchase" element={<Purchase/>} />
+          <Route path="/purchased-courses" element={<Purchase/>} />
         </Routes>
       </Router>
       <Sidebar />
