@@ -26,7 +26,7 @@ const PurchasedCourses = () => {
 
         // Make API call to fetch purchased courses
         const response = await axios.get(
-          // `https://udemybackend-55dq.onrender.com/api/admin/purchased-courses/${userId}`
+          `https://udemybackend-55dq.onrender.com/api/admin/purchased-courses/${userId}`
         );
 
         // Debugging: Log the API response

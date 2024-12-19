@@ -86,18 +86,18 @@ const Dropdown = styled.select`
 `;
 
 const Profile = () => {
-  // const {user} = useAuth()
+  const {user} = useAuth()
 
   return (
     <ProfileContainer>
       <Sidebar>
       <UserOutlined style={{ fontSize: '150px' }} />
         <SidebarHeader> <Typography.Title level={2} strong className='username'>
-          {/* {user} */}
+        {user?.name || "Username"}
         </Typography.Title></SidebarHeader>
         <SidebarItem>View public profile</SidebarItem>
         <SidebarItem>Profile</SidebarItem>
-        <SidebarItem><Link to='/'>Photo</Link></SidebarItem>
+        <SidebarItem><Link to='/image'>Photo</Link></SidebarItem>
         <SidebarItem>Account Security</SidebarItem>
         <SidebarItem><Link to='/purchased-courses'>Subscriptions</Link></SidebarItem>
         <SidebarItem>Payment methods</SidebarItem>
@@ -112,7 +112,7 @@ const Profile = () => {
         <SectionTitle>Basics:</SectionTitle>
         <InputContainer>
           <Label>First Name</Label>
-          {/* <Input type="text" placeholder={user.name} /> */}
+          <Input type="text" placeholder={user?.name || "Enter your name"} />
         </InputContainer>
         {/* <InputContainer>
           <Label>Last Name</Label>
