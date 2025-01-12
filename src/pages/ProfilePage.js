@@ -199,7 +199,9 @@ const Profile = () => {
           <Link to="/purchased-courses">Subscriptions</Link>
         </SidebarItem>
         <SidebarItem>Payment methods</SidebarItem>
-        <SidebarItem>Privacy</SidebarItem>
+        <SidebarItem>
+          <Link to="/Certificate">Certificate</Link>
+        </SidebarItem>
         <SidebarItem>Notifications</SidebarItem>
         <SidebarItem>API clients</SidebarItem>
         <SidebarItem>Close account</SidebarItem>

@@ -56,13 +56,14 @@ const App = () => {
           <Route path="/course/:id" element={<CourseDetails />} />
           {/* <Route path="/admin/:id" element={<AdminCourse />} /> */}
           <Route path="/categories/:categoryId/courses" element={<CoursesByCategory />} />
-          <Route path="/generateCertificate" element={<CertificatePage />} />
+          <Route path="/Certificate" element={<CertificatePage />} />
           <Route path="/certificate/:categoryId" element={<CertificateDisplay />} />
           <Route path="/coursean/categoryList" element={<CategoryPage/>} />
           <Route path="/coursean/categoryList" element={<CategoryPage/>} />
           {/* <Route path="/edit" element={<Edit/>} /> */}
           <Route path="/image" element={<Image/>} />
           <Route path="/purchased-courses" element={<Purchase/>} />
+          <Route path="/purchas" element={<Purchase/>} />
         </Routes>
       </Router>
       <Sidebar />
