@@ -118,10 +118,10 @@ const CertificatePage = () => {
     <CertificateContainer>
       {isEligible ? (
         <CertificateWrapper>
-          <Title>Certificate of Completion</Title>
+          <Title>Certificate of Achievement</Title>
           <Subtitle>This is to certify that</Subtitle>
           <UserDetails><strong>{userDetails.name}</strong></UserDetails>
-          <UserDetails>has completed all required courses</UserDetails>
+          <UserDetails>has completed all required courses to obtain a universal IT certificate</UserDetails>
           <UserDetails>on {userDetails.completionDate}</UserDetails>
           <PrintButton onClick={handlePrint}>Print Certificate</PrintButton>
         </CertificateWrapper>
